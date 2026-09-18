@@ -1,5 +1,7 @@
 # Video Release Gate
 
+> **Status (2026-09-18):** Thin extract only. **Do not treat as a separate product.** Fold into [`claude-video-kit`](https://github.com/runesleo/claude-video-kit) as the post-render publish gate. Prefer that repo for installs and issues.
+
 Fail-closed release gate for agent-produced videos.
 
 **Chinese:** [README.zh.md](./README.zh.md)

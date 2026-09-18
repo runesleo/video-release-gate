@@ -1,5 +1,7 @@
 # Video Release Gate
 
+> **状态（2026-09-18）**：仅作薄提取。**不要当独立产品推。** 应并入 [`claude-video-kit`](https://github.com/runesleo/claude-video-kit) 作为成片发布门。安装与 issue 请走 video-kit。
+
 面向 Agent 产出视频的 fail-closed 发布门。
 
 **English:** [README.md](./README.md)
