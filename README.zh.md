@@ -1,38 +1,21 @@
-# Video Release Gate
+# Video Release Gate — 历史提取版
 
-> **状态（2026-09-18）**：仅作薄提取。**不要当独立产品推。** 应并入 [`claude-video-kit`](https://github.com/runesleo/claude-video-kit) 作为成片发布门。安装与 issue 请走 video-kit。
+**唯一 canonical 实现：[claude-video-kit](https://github.com/runesleo/claude-video-kit)。**
 
-面向 Agent 产出视频的 fail-closed 发布门。
+[English](./README.md)
 
-**English:** [README.md](./README.md)
+本仓库仅保留原始最终成片放行检查的代码与测试，作为 thin archive。
+不再作为独立产品或安装入口，也不并行开发。使用、引用和提 issue 请统一指向主视频管线。
 
-散文式 QA 不等于发布门。这个 CLI 把最终 MP4、封面、三份 QA、独立终审绑定到同一组 hash，再机器核验响度、近静音窗口和平台封面尺寸；上传/排期/公开发布前必须再 `verify`。
+- [完整流程：evaluate → verify → 交付](https://github.com/runesleo/claude-video-kit/blob/main/docs/RELEASE_GATE.md)
+- [canonical CLI](https://github.com/runesleo/claude-video-kit/blob/main/scripts/video_release_gate.py)
+- [质量配置](https://github.com/runesleo/claude-video-kit/blob/main/config/video_quality_profile.json)
+- [回归测试](https://github.com/runesleo/claude-video-kit/blob/main/tests/test_video_release_gate.py)
 
-## 你能得到什么
+主管线保留渲染前审阅与 `verify-shorts`，并在分发交付前检查最终 MP4、封面、
+三份 QA、独立终审、音频测量及质量配置的绑定关系。下游实际上传或排期前必须立即复验。
+这里的历史代码不能代替 canonical gate；两者都不提供自动上传或发布。
 
-- `video_release_gate.py`：evaluate / verify CLI（`video_release_gate.v1`）
-- `video_quality_profile.json`：质量棘轮
-- 单元测试复现真实坏母带形态（过静 / 高 LRA / 生产者自审）
+迁移背景：[claude-video-kit #27](https://github.com/runesleo/claude-video-kit/issues/27)。
 
-## 快速开始
-
-```bash
-python3 -m unittest discover -s tests -v
-./bin/video-release-gate evaluate --help
-```
-
-## 要求
-
-- Python 3.10+ · `ffprobe` · 独立审片人 ≠ 生产者
-
-## 隐私
-
-不含账号、cookies、uploader 或私有成片。默认项目根：`./content/video`。
-
-## 已验证
-
-本地单测 8/8 PASS。来自真实发布事故：散文 QA 放过了坏母带。
-
-## License
-
-MIT · [Leo](https://x.com/runes_leo) · [leolabs.me](https://leolabs.me/?utm_source=github&utm_medium=readme&utm_campaign=oss&utm_content=video-release-gate)
+MIT，见 [LICENSE](./LICENSE)。
